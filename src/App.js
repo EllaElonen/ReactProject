@@ -10,18 +10,17 @@ class App extends Component {
       { name: "Manu", age: 29 },
       { name: "Stephanie", age: 26 }
     ],
-    otherState: "some other value",
     randomPersons: [
       { name: "randomPerson1", age: Math.floor(Math.random() * 30) }
     ]
   };
 
-  switchNameHandler = (event) => {
+  switchHandler = (event) => {
     this.setState({
       persons: [
-        { name: "newName", age: 28 },
+        { name: "newName", age: 29 }, //TODO: This is supposed to be a variable newName that gets the value Maximilian
         { name: "Manu", age: 29 },
-        { name: "Stephanie", age: 27 }
+        { name: "Stephanie", age: 26 }
       ]
     });
   };
@@ -29,12 +28,20 @@ class App extends Component {
   nameChangeHandler = (event) => {
     this.setState({
     persons: [
-      { name: 'Max', age: 28 },
+      { name: 'Maximilian', age: 28 },
       { name: event.target.value, age: 29 },
       { name: "Stephanie", age: 26 }
     ]
   });
 };
+
+  /*randomChangeHandler = (event) => {
+    this.setState({
+    randomPersons: [
+      { name: randomPerson, age: Math.floor(Math.random() * 30)}
+    ]
+  });
+};*/
 
   render() {
     const style ={
@@ -63,19 +70,25 @@ class App extends Component {
 
         <h2>This is a register of person objects</h2>
 
+
         <button 
-        style={style}
-        onClick={this.switchNameHandler.bind(this, "Maximilian")}
-        changed={this.nameChangeHandler}>
+          style={style}
+          onClick={this.switchHandler.bind(this, "Maximilian")}>
           Switch name
         </button>
 
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
-          click={this.switchNameHandler.bind(this, "Max")}
+          click={this.switchHandler.bind(this, "Max")}
           changed={this.nameChangeHandler}
         />
+
+        <button 
+          style={style}
+          onClick={this.switchHandler.bind(this, "Maximilian")}>
+          Switch Max
+        </button>
 
         <Person
           name={this.state.persons[1].name}
@@ -88,6 +101,19 @@ class App extends Component {
           age={this.state.persons[2].age}
           changed={this.nameChangeHandler}
         />
+        
+        <Person
+          name={this.state.randomPersons[0].name}
+          age={this.state.randomPersons[0].age}
+          changed={this.randomChangeHandler}
+        />
+
+         <button 
+            style={style}
+            onClick={this.switchHandler.bind(this, "Maximilian")}
+            changed={this.randomChangeHandler}>
+            Switch random person
+        </button>
       </div>
     );
   }

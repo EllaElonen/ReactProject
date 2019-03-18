@@ -25,6 +25,7 @@
 
 button{
   color: darkgreen;
+  margin: 10px;
 }
 
 /*@keyframes App-logo-spin {
@@ -34,4 +35,4 @@ button{
   to {
     transform: rotate(150deg);
   }
-}*/ 
+}*/
